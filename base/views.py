@@ -6,17 +6,17 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def index(request):
     bg = picture.objects.filter(isWallpaper=True).first
+    messagepic = picture.objects.filter(isMessagesThumbnail=True).first
     execs = Executive.objects.all()
     event1 = Event.objects.filter(isFeatured=True).first
     event2 = Event.objects.filter(isFeatured=True).last
     events = []
     tests = []
     audios = []
-    featuredImages = []
+
 
     #making sure featured images aren't more than six
     for p in range(6):
-        featuredImages.append(picture.objects.filter(isFeatured=True)[p])
         audios.append(audioMessage.objects.all()[p])
         tests.append(Testimony.objects.all()[p])
     for t in range(3):
@@ -29,13 +29,14 @@ def index(request):
     
     context={
         'bg': bg,
+        'messagepic': messagepic,
         'events':events,
         'execs': execs,
         'event1': event1,
         'event2': event2,
         'tests': tests,
         'audios': audios,
-        'featured':featuredImages
+        
     }
     return render(request, 'base/index.html', context)
 

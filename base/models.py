@@ -96,5 +96,6 @@ class picture(models.Model):
     date = models.DateTimeField(default=datetime.now)
     isFeatured = models.BooleanField(default=False)
     isWallpaper = models.BooleanField(default=False)
+    isMessagesThumbnail = models.BooleanField(default=False)
 
 # Create your models here.
