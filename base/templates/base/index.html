@@ -220,10 +220,11 @@
             
           </div>
           <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            
+              {% if event1 %}
               <a href="{%url 'eventDetails' event1.slug%}" >
               <img src="{{event1.image.url}}" alt="" class="stack-front" width="80%">
               </a>
+              {%endif%}
               
             </div>
           </div>
@@ -502,7 +503,7 @@
                     </div>
                     <p>
                       <i class="bi bi-quote quote-icon-left"></i>
-                      <span>{{test.testimony}}</span>
+                      <span>{{test.testimony|safe}}</span>
                       <i class="bi bi-quote quote-icon-right"></i>
                     </p>
                   </div>

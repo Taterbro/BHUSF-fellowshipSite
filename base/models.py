@@ -50,6 +50,7 @@ class Testimony(models.Model):
     
     class Meta:
         verbose_name_plural= 'Testimonies'
+        ordering=['-id']
 
 class Event(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='images', default='placeholder')
@@ -97,5 +98,8 @@ class picture(models.Model):
     isFeatured = models.BooleanField(default=False)
     isWallpaper = models.BooleanField(default=False)
     isMessagesThumbnail = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering=['-id']
 
 # Create your models here.

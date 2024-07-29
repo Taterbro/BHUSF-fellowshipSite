@@ -8,20 +8,19 @@ def index(request):
     bg = picture.objects.filter(isWallpaper=True).first
     messagepic = picture.objects.filter(isMessagesThumbnail=True).first
     execs = Executive.objects.all()
-    event1 = Event.objects.filter(isFeatured=True).first
-    event2 = Event.objects.filter(isFeatured=True).last
-    events = []
-    tests = []
-    audios = []
+    tests=Testimony.objects.all()[:6]   #to show only the first six
 
 
-    #making sure featured images aren't more than six
-    for p in range(6):
-        audios.append(audioMessage.objects.all()[p])
-        tests.append(Testimony.objects.all()[p])
-    for t in range(3):
-        events.append(Event.objects.all()[t])
-    #end of that
+    if Event.objects.count() != 0:
+        event1 = Event.objects.filter(isFeatured=True).first
+    
+    
+    
+
+
+    #making sure featured testimonies images aren't more than six
+    
+        #end of that
     
     
 
@@ -33,9 +32,9 @@ def index(request):
         'events':events,
         'execs': execs,
         'event1': event1,
-        'event2': event2,
         'tests': tests,
-        'audios': audios,
+        
+        
         
     }
     return render(request, 'base/index.html', context)
